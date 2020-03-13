@@ -1,7 +1,5 @@
 # cocktail-app v0.1.0
 
-Garrett's branch
-
 <img alt="cocktail-app v0.1.0 gif" src="assets/images/cocktail-app_0-1-0.gif">
 
 ## Description
