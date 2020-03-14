@@ -11,7 +11,7 @@ $(document).ready(function() {
         url: queryURL,
         method: "GET"
       }).then(function(res) {
-        console.log(res.drinks[0]);
+        console.log(res.drinks[0].strInstructions);
         var drink = res.drinks[0].strDrink;
         var img = res.drinks[0].strDrinkThumb;
         var instructions = res.drinks[0].strInstructions;
@@ -24,7 +24,7 @@ $(document).ready(function() {
                               <p><a href="#">This is a link</a></p>
                           </div>
                           <div class="card-reveal">
-                              <span class="card-title grey-text text-darken-4">${drink} Recipe<i class="material-icons right">X</span>
+                              <span class="card-title grey-text text-darken-4">${drink} Recipe<i class="material-icons right">X</i></span>
                               <p>${instructions}</p>
                           </div>
                       </div>`;
