@@ -1,3 +1,7 @@
+
+
+document.getElementsByClassName('dropdown')
+
 $(document).ready(function() {
   getRandomDrinks();
 
@@ -33,3 +37,4 @@ $(document).ready(function() {
     }
   }
 });
+
