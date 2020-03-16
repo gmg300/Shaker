@@ -11,7 +11,9 @@ $(document).ready(function() {
       .closest(".card-content")
       .find(".card-title")
       .text();
-    saveDrink(element, selectedDrink);
+    var drink = selectedDrink.substring(0, selectedDrink.length - 9);
+    console.log(drink);
+    saveDrink(element, drink);
   });
 
   function getDrinks() {
@@ -20,7 +22,6 @@ $(document).ready(function() {
       alcohol: true,
       alcoholType: ""
     };
-    console.log(options);
     var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
     var drinksList = [];
     // $("#drinks-view").empty();
@@ -119,6 +120,13 @@ $(document).ready(function() {
     var instructions = res.drinks[0].strInstructions;
     // Get drink ingredients and measurements, concatenate and format as list
     var formattedIngredients = formatIngredients(res);
+    // Check if saved
+    var saved = "";
+    if(savedDrinks.includes(drink)) {
+      saved = `<i class="save-drink fas fa-check-circle green-text text-lighten-2 fa-2x"></i>`
+    } else {
+      saved = `<i class="save-drink far fa-save red-text text-lighten-2 fa-2x"></i>`
+    }
     // Construct HTML card with drink info
     var block = `<div class="col s12 m6">
                       <div class="card hoverable">
@@ -127,7 +135,7 @@ $(document).ready(function() {
                         </div>
                         <div class="card-content">
                           <span class="card-title activator grey-text text-darken-4">${drink}<i class="material-icons right">more_vert</i></span>
-                          <p><i class="material-icons hoverable save-drink">save_alt</i></p>
+                          <p>${saved}</p>
                         </div>
                        <div class="card-reveal">
                          <span class="card-title grey-text text-darken-4">${drink} Recipe<i class="material-icons right">close</i></span>
@@ -144,14 +152,13 @@ $(document).ready(function() {
     $("#drinks-view").prepend(block);
   }
 
-  function saveDrink(element, selectedDrink) {
-    if (savedDrinks.includes(selectedDrink)) {
+  function saveDrink(element, drink) {
+    if (savedDrinks.includes(drink)) {
       return;
     } else {
-      savedDrinks.push(selectedDrink);
-      console.log(element);
-      console.log(selectedDrink);
-      element.text('check_circle');
+      savedDrinks.push(drink);
+      element.removeClass('far fa-save red-text')
+      element.addClass('fas fa-check-circle green-text');
       storeSavedDrinks();
       renderSavedDrinks();
     }
