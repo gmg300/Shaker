@@ -1,8 +1,15 @@
 $(document).ready(function() {
+  var savedDrinks = [];
+  
   getDrinks();
 
   function getDrinks() {
-    var options = [];
+    var options = {
+      drinkCount: 1,
+      alcohol: true,
+      alcoholType: ""
+    };
+    console.log(options);
     var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
     var drinksList = [];
     // $("#drinks-view").empty();
@@ -125,4 +132,14 @@ $(document).ready(function() {
                     </div>`;
     $("#drinks-view").prepend(block);
   }
+
+  function saveDrink() {}
+
+  function storeSavedDrinks() {
+    
+  }
+
+  function getSavedDrinks() {}
+
+  function renderSavedDrinks() {}
 });
