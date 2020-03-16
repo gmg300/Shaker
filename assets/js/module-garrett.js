@@ -1,7 +1,18 @@
 $(document).ready(function() {
   var savedDrinks = [];
-  
+
+  getSavedDrinks();
   getDrinks();
+
+  $(document).on("click", ".save-drink", function(e) {
+    e.preventDefault();
+    var element = $(this);
+    var selectedDrink = $(this)
+      .closest(".card-content")
+      .find(".card-title")
+      .val();
+    saveDrink(element, selectedDrink);
+  });
 
   function getDrinks() {
     var options = {
@@ -116,7 +127,7 @@ $(document).ready(function() {
                         </div>
                         <div class="card-content">
                           <span class="card-title activator grey-text text-darken-4">${drink}<i class="material-icons right">more_vert</i></span>
-                          <p><a href="#">This is a link</a></p>
+                          <p><a class="save-drink"><i class="material-icons hoverable">save_alt</i></a></p>
                         </div>
                        <div class="card-reveal">
                          <span class="card-title grey-text text-darken-4">${drink} Recipe<i class="material-icons right">close</i></span>
@@ -133,13 +144,31 @@ $(document).ready(function() {
     $("#drinks-view").prepend(block);
   }
 
-  function saveDrink() {}
-
-  function storeSavedDrinks() {
-    
+  function saveDrink(element, selectedDrink) {
+    if (savedDrinks.includes(selectedDrink)) {
+      return;
+    } else {
+      savedDrinks.push(selectedDrink);
+      console.log(element);
+      element.find('.material-icons').text('check_circle');
+      storeSavedDrinks();
+      renderSavedDrinks();
+    }
   }
 
-  function getSavedDrinks() {}
+  function storeSavedDrinks() {
+    localStorage.setItem("savedDrinks", JSON.stringify(savedDrinks));
+  }
+
+  function getSavedDrinks() {
+    var storedDrinks = JSON.parse(localStorage.getItem("savedDrinks"));
+    if (storedDrinks == null) {
+      savedDrinks = [];
+    } else {
+      savedDrinks = storedDrinks;
+    }
+    renderSavedDrinks();
+  }
 
   function renderSavedDrinks() {}
 });
