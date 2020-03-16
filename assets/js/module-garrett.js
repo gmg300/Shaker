@@ -10,13 +10,13 @@ $(document).ready(function() {
     var selectedDrink = $(this)
       .closest(".card-content")
       .find(".card-title")
-      .val();
+      .text();
     saveDrink(element, selectedDrink);
   });
 
   function getDrinks() {
     var options = {
-      drinkCount: 1,
+      drinkCount: 5,
       alcohol: true,
       alcoholType: ""
     };
@@ -24,7 +24,7 @@ $(document).ready(function() {
     var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
     var drinksList = [];
     // $("#drinks-view").empty();
-    for (i = 0; i < 1; i++) {
+    for (i = 0; i < options.drinkCount; i++) {
       // loop over ajax query for as many drinks as user specifies
       $.ajax({
         url: queryURL,
@@ -120,14 +120,14 @@ $(document).ready(function() {
     // Get drink ingredients and measurements, concatenate and format as list
     var formattedIngredients = formatIngredients(res);
     // Construct HTML card with drink info
-    var block = `<div class="col s12 m5">
-                      <div class="card">
+    var block = `<div class="col s12 m6">
+                      <div class="card hoverable">
                         <div class="card-image waves-effect waves-block waves-light">
                           <img class="activator" src="${img}">
                         </div>
                         <div class="card-content">
                           <span class="card-title activator grey-text text-darken-4">${drink}<i class="material-icons right">more_vert</i></span>
-                          <p><a class="save-drink"><i class="material-icons hoverable">save_alt</i></a></p>
+                          <p><i class="material-icons hoverable save-drink">save_alt</i></p>
                         </div>
                        <div class="card-reveal">
                          <span class="card-title grey-text text-darken-4">${drink} Recipe<i class="material-icons right">close</i></span>
@@ -150,7 +150,8 @@ $(document).ready(function() {
     } else {
       savedDrinks.push(selectedDrink);
       console.log(element);
-      element.find('.material-icons').text('check_circle');
+      console.log(selectedDrink);
+      element.text('check_circle');
       storeSavedDrinks();
       renderSavedDrinks();
     }
