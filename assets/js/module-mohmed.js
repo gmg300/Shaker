@@ -10,6 +10,7 @@ function getLocation() {
 src="https://www.google.com/maps/embed/v1/search?q=bars%20near%20me&key=AIzaSyDjJeZWvxxMbymDJSMvXpXphLrD4lxDP84" allowfullscreen></iframe>
         `)
         });
+        $(`#g-maps`).attr(`style`, `text-align: center`)
 
     } else {
         $(`#g-maps`).text("Geolocation is not supported by this browser.")
