@@ -1,4 +1,4 @@
-# cocktail-app v0.1.0
+# cocktail-app v0.2.0
 
 <img alt="cocktail-app v0.1.0 gif" src="assets/images/cocktail-app_0-1-0.gif">
 
@@ -6,7 +6,7 @@
 
 **Challenges**  
 
-**v0.1.0**
+**v0.2.0**
 
 **Future Versions**
 
