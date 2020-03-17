@@ -1,5 +1,4 @@
 # cocktail-app v0.1.0
-Mohmed's branch
 
 <img alt="cocktail-app v0.1.0 gif" src="assets/images/cocktail-app_0-1-0.gif">
 
