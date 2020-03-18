@@ -1,5 +1,13 @@
 
+$(document).ready(function(){
+    $('.sidenav').sidenav();
 
-document.getElementsByClassName('dropdown')
+
+
+
+
+})
+
+
 
 
