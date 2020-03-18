@@ -10,53 +10,98 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
   <link rel="stylesheet" href="assets/css/style.css">
-
   <title>Cocktail App</title>
 </head>
 
 <body>
-
+  <!-- HEADER/NAV BAR -->
   <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo"><img src="assets/images/Logo.png" height="50px" width="50px" alt="Logo">
       </a>
+      <div id="nav-mobile" class="right hide-on-med-and-down">
+        <!-- MAPS -->
+        <div id="slide-out" class="sidenav">
+          <div id="g-maps">
+          </div>
+        </div>
+        <!-- Sidenav Trigger -->
+        <a class="sidenav-trigger btn" data-target="slide-out">Find Bars Near You</a>
+        <!-- SAVED DRINKS -->
+        <a class='dropdown-trigger btn right-align' data-target='saved-drinks'>Saved Drinks</a>
+        <ul id='saved-drinks' class='dropdown-content'>
+          <li><a href="#!">one</a></li>
+          <li><a href="#!">two</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
-
+  <!-- SEARCH FORM -->
   <div class="container">
-    <div id="drinks-view" class="row">
-      <!-- EXAMPLE CARD -->
-      <!-- <div class="card">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="drink-image"
-          src="assets/images/__opt__aboutcom__coeus__resources__content_migration__liquor__2018__09__04153106__mojito-720x720-recipe-a55b114fc99c4a64b38c9ef6d1660e20.jpg">
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">Mojito<i class="material-icons right"></i></span>
-        <p><a href="#">This is a link</a></p>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Mojito Recipe<i class="material-icons right">X</span>
-        <p>Place mint leaves and 1 lime wedge into a sturdy glass. Use a muddler to crush the mint and lime to release
-          the mint oils and lime juice. Add 2 more lime wedges and the sugar, and muddle again to release the lime
-          juice. Do not strain the mixture. Fill the glass almost to the top with ice. Pour the rum over the ice, and
-          fill the glass with carbonated water. Stir, taste, and add more sugar if desired. Garnish with the remaining
-          lime wedge.</p>
-      </div>
-    </div> -->
-
-      <div id="g-maps">
-
-      </div>
+    <ul class="collapsible">
+      <li>
+        <div class="collapsible-header"><i class="material-icons">search</i>Find a drink!</div>
+        <div class="collapsible-body">
+          <p>
+            <div class="input-field col s12">
+              <select id="drinks-number">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4" selected>4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <label>How many drinks do you want to find?</label>
+            </div>
+          </p>
+          <p>
+            <div class="input-field col s12">
+              <select id="alcohol-type">
+                <option value="random" selected>Surprise Me!</option>
+                <option value="vodka">Vodka</option>
+                <option value="whiskey">Whiskey</option>
+                <option value="tequila">Tequila</option>
+                <option value="gin">Gin</option>
+                <option value="rum">Rum</option>
+              </select>
+              <label>What type of alcohol?</label>
+            </div>
+          </p>
+          <p>
+            <label>
+              <input id="alcohol" type="checkbox" />
+              <span>Non-alcoholic</span>
+            </label>
+          </p>
+          <button id="find-drinks" class="btn waves-effect waves-light" type="submit" name="action">Search
+            <i class="material-icons left">search</i>
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <!-- DRINKS -->
+  <div id="drinks" class="container">
+    <!-- RANDOM DRINK -->
+    <div id="random-drink" class="row">
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.core.min.js"></script>
-    <script src="assets/js/module-herson.js"></script>
-    <script src="assets/js/module-marc.js"></script>
-    <script src="assets/js/module-garrett.js"></script>
-    <!-- <script src="assets/js/module-mohmed.js"></script> -->
+    <!-- SEARCHED DRINKS -->
+    <div id="drinks-view" class="row">
+    </div>
+  </div>
+  <!-- SCRIPT LINKS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.core.min.js"></script>
+  <script src="assets/js/module-herson.js"></script>
+  <script src="assets/js/module-marc.js"></script>
+  <script src="assets/js/module-garrett.js"></script>
+  <script src="assets/js/module-mohmed.js"></script>
 </body>
 
 </html>
