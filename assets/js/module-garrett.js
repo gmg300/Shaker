@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  console.log("*** module-garrett.js loaded ***");
   $('.collapsible').collapsible(); // Activate Materialize collapse bar
   $('select').formSelect(); // Activate Materialize select input
   $('.dropdown-trigger').dropdown(); // Activate Materialize dropdown
