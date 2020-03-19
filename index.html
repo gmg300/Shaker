@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -7,67 +8,63 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-  integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
   <link rel="stylesheet" href="assets/css/style.css">
-
-  <title>Cocktail App</title>
+  <link rel="stylesheet" href="assets/css/spacing.css">
+  <title>Shaker</title>
 </head>
 
 <body>
-
   <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo"><img src="assets/images/Logo.png" height="50px" width="50px" alt="Logo">
       </a>
     </div>
   </nav>
-  <nav> 
-    <!-- navbar content here  --> 
+  <nav>
+    <!-- navbar content here  -->
     <ul id="slide-out" class="sidenav">
-      <li><div class="user-view">
-        <div class="background">
-          <img src="assets/images/bartender.jpg"height=200px>
-        </div>
-        <!-- spacer for image -->
-        <br>
-        <br>
-        <br>
-          
+      <li>
+        <div class="user-view">
+          <div class="background">
+            <img src="assets/images/bartender.jpg" height=200px>
+          </div>
+          <!-- spacer for image -->
+          <br>
+          <br>
+          <br>
       </li>
       </div>
       <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
       <li><a href="#!">Second Link</a></li>
-      <li><div class="divider"></div></li>
+      <li>
+        <div class="divider"></div>
+      </li>
       <li><a class="subheader">Subheader</a></li>
       <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
     </ul>
     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-  
   </nav>
-
   <div class="container">
-
-    <!-- Collapse feature:  when clicked, opens selector choose drink type and how many to display -->
+    <!-- SEARCH FORM -->
     <ul class="collapsible popout">
       <li>
         <div class="collapsible-header">
           <i class="material-icons">search</i>Find Drinks</div>
         <div class="collapsible-body">
-
           <div class="input-field col s12">
-            <select>
-              <option value="random" selected>Surprise Me</option>
+            <select id="alcohol-type">
+              <option value="random" selected>Random</option>
               <option value="gin">Gin</option>
               <option value="rum">Rum</option>
               <option value="tequila">Tequila</option>
               <option value="vodka">Vodka</option>
               <option value="whiskey">Whiskey</option>
             </select>
-            <label>Select hard liquor</label>
+            <label class="mt-2">Select hard liquor</label>
           </div>
-
           <div class="input-field col s12">
-            <select>
+            <select id="drinks-number">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -79,35 +76,21 @@
               <option value="9">9</option>
               <option value="10">10</option>
             </select>
-            <label>Select number of drinks to show</label>
+            <label class="mt-2">Select number of drinks/label>
           </div>
       </li>
     </ul>
-
+    <!-- RANDOM DRINK -->
+    <div id="random-drink" class="row">
+    </div>
+    <!-- GENERATED DRINKS -->
     <div id="drinks-view" class="row">
-      <!-- EXAMPLE CARD -->
-      <!-- <div class="card">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="drink-image"
-          src="assets/images/__opt__aboutcom__coeus__resources__content_migration__liquor__2018__09__04153106__mojito-720x720-recipe-a55b114fc99c4a64b38c9ef6d1660e20.jpg">
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">Mojito<i class="material-icons right"></i></span>
-        <p><a href="#">This is a link</a></p>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Mojito Recipe<i class="material-icons right">X</span>
-        <p>Place mint leaves and 1 lime wedge into a sturdy glass. Use a muddler to crush the mint and lime to release
-          the mint oils and lime juice. Add 2 more lime wedges and the sugar, and muddle again to release the lime
-          juice. Do not strain the mixture. Fill the glass almost to the top with ice. Pour the rum over the ice, and
-          fill the glass with carbonated water. Stir, taste, and add more sugar if desired. Garnish with the remaining
-          lime wedge.</p>
-      </div>
-    </div> -->
+    </div>
+    <!-- GOOGLE MAPS -->
+    <div id="g-maps">
     </div>
   </div>
-  <div id="g-maps"></div>
-
+  <!-- SCRIPT LINKS -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.core.min.js"></script>
@@ -115,7 +98,7 @@
   <script src="assets/js/module-marc.js"></script>
   <script src="assets/js/module-garrett.js"></script>
   <script src="assets/js/module-mohmed.js"></script>
-   
+
 </body>
 
 </html>
