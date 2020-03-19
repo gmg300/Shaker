@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
- 
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -45,6 +44,44 @@
   </nav>
 
   <div class="container">
+
+    <!-- Collapse feature:  when clicked, opens selector choose drink type and how many to display -->
+    <ul class="collapsible popout">
+      <li>
+        <div class="collapsible-header">
+          <i class="material-icons">search</i>Find Drinks</div>
+        <div class="collapsible-body">
+
+          <div class="input-field col s12">
+            <select>
+              <option value="random" selected>Surprise Me</option>
+              <option value="gin">Gin</option>
+              <option value="rum">Rum</option>
+              <option value="tequila">Tequila</option>
+              <option value="vodka">Vodka</option>
+              <option value="whiskey">Whiskey</option>
+            </select>
+            <label>Select hard liquor</label>
+          </div>
+
+          <div class="input-field col s12">
+            <select>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4" selected>4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+            <label>Select number of drinks to show</label>
+          </div>
+      </li>
+    </ul>
+
     <div id="drinks-view" class="row">
       <!-- EXAMPLE CARD -->
       <!-- <div class="card">
@@ -75,9 +112,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.core.min.js"></script>
   <script src="assets/js/module-herson.js"></script>
-  <!-- <script src="assets/js/module-marc.js"></script> -->
+  <script src="assets/js/module-marc.js"></script>
   <script src="assets/js/module-garrett.js"></script>
-  <!-- <script src="assets/js/module-mohmed.js"></script> -->
+  <script src="assets/js/module-mohmed.js"></script>
 </body>
 
 </html>
