@@ -1,4 +1,3 @@
-//Mohmed google maps api
 $(document).ready(function () {
 
     var lat;
