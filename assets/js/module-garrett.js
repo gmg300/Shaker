@@ -1,9 +1,5 @@
 $(document).ready(function() {
   console.log("*** module-garrett.js loaded ***");
-  $('.collapsible').collapsible(); // Activate Materialize collapse bar
-  $('select').formSelect(); // Activate Materialize select input
-  $('.dropdown-trigger').dropdown(); // Activate Materialize dropdown
-  $('.sidenav').sidenav(); // Activate Materialize sidenav
   
   var savedDrinks = [];
   getSavedDrinks();
@@ -12,7 +8,7 @@ $(document).ready(function() {
   $('#find-drinks').on('click', function(e) { // Search button
     e.preventDefault();
     getDrinks();
-  })
+  });
 
   $(document).on("click", ".save-drink", function(e) { // Save drinks to list group
     e.preventDefault();
