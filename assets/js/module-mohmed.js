@@ -16,11 +16,7 @@ $(document).ready(function () {
                 lat = position.coords.latitude
                 long = position.coords.longitude
                 queryURL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${long}&radius=1500&type=restaurant&keyword=cruise&key=AIzaSyDjJeZWvxxMbymDJSMvXpXphLrD4lxDP84`
-
-                //nearbylocaion(lat, long);
-                
-                //radius is in meters
-
+                gmap();
             });
 
         } else {
@@ -28,32 +24,30 @@ $(document).ready(function () {
         }
     }
 
-function gmap(){
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-        console.log(response.results.length)
-        var resultlength = response.results.length
-        console.log(`resultslength = ${resultlength}`)
+    function gmap() {
 
-        for (var i = 0; i < resultlength; i++) {
-            data.push({
-                name: response.results[i].name,
-                opennow: response.results[i].opening_hours.open_now,
-                photo: response.results[i].photos.html_attributions
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
 
-            })
-            console.log(`data: ${data}`)
-        }
-        console.log(data)
-    })
+            for (var i = 0; i < response.results.length; i++) {
+                data.push({
+                    name: response.results[i].name,
+                    opennow: response.results[i].opening_hours.open_now,
+                    photo: response.results[i].photos.html_attributions
 
-}
+                })
+
+            }
+
+        })
+
+    }
 
     getLocation();
-    gmap();
-    
-    
+
+
+
 
 });
