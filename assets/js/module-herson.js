@@ -1,1 +1,13 @@
-document.getElementsByClassName('dropdown')
+
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+
+
+
+
+
+})
+
+
+
+
