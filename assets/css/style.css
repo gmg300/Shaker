@@ -6,8 +6,8 @@
     height: auto; 
 }
 
-.container{
-    background-color: khaki
+body {
+    background-color: rgba(235, 190, 155, .25);
 }
 
 .collapsible-body{
