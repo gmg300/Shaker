@@ -31,3 +31,11 @@ input[type=range] {
 .show-drink {
     cursor: pointer;
 }
+
+footer{
+    box-sizing: border-box;
+    background-color: #ef5350;
+    height: 50px;
+    text-align: center;
+    padding: .25rem;
+}
