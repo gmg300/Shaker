@@ -5,25 +5,33 @@ $(document).ready(function() {
   getSavedDrinksList();
   getFeaturedDrink();
 
+  // SEARCH BUTTON
   $("#find-drinks").on("click", function(e) {
     // Search button
     e.preventDefault();
     getDrinks();
   });
-
+  // SAVE DRINKS BUTTONS
   $(document).on("click", ".save-drink", function(e) {
     // Save drinks to list group
     e.preventDefault();
     var element = $(this);
-    var selectedDrink = $(this)
+    var drink = $(this)
       .closest(".card-content")
       .find(".card-title")
       .text();
-    var drink = selectedDrink.substring(0, selectedDrink.length - 9);
-    // console.log(drink);
+      // console.log(drink);
     saveDrink(element, drink);
   });
-
+  // DISPLAY SAVED DRINK BUTTONS
+  $(document).on("click", ".show-drink", function(e) {
+    // Redisplay a saved drink
+    e.preventDefault();
+    var element = $(this);
+    var savedDrink = $(this).text();
+    getSavedDrink(savedDrink);
+  });
+  
   $(document).on("click", ".show-drink", function(e) {
     // Redisplay a saved drink
     e.preventDefault();
@@ -69,7 +77,7 @@ $(document).ready(function() {
                           <img class="activator" src="${img}">
                         </div>
                         <div class="card-content">
-                          <span class="card-title activator grey-text text-darken-4">${drink}<i class="material-icons right">more_vert</i></span>
+                          <span class="card-title activator grey-text text-darken-4">${drink}</span>
                           <p>${saved}</p>
                         </div>
                        <div class="card-reveal">
@@ -164,7 +172,7 @@ $(document).ready(function() {
                           <img class="activator" src="${img}">
                         </div>
                         <div class="card-content">
-                          <span class="card-title activator grey-text text-darken-4">${drink}<i class="material-icons right">more_vert</i></span>
+                          <span class="card-title activator grey-text text-darken-4">${drink}</span>
                           <p>${saved}</p>
                         </div>
                        <div class="card-reveal">
@@ -288,7 +296,8 @@ $(document).ready(function() {
     $("#drink-list").empty();
     for (i = 0; i < savedDrinks.length; i++) {
       var drink = savedDrinks[i];
-      var block = `<li><a class="show-drink">${drink}</a></li>`;
+      var block = `<i class="delete btn right hoverable m-0 pt-2 material-icons ">delete_forever</i>
+      <a class="collection-item show-drink">${drink}</a>`;
       $("#drink-list").prepend(block);
     }
   }

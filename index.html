@@ -15,13 +15,13 @@
 </head>
 
 <body>
-
-  <nav>
-    <!-- navbar content here  -->
-    <a href="#" class="brand-logo center"><img src="assets/images/Logo.png" height="50px" width="50px" alt="Logo">
-    </a>
-  </nav>
-  <div class="container">
+  <header>
+    <nav>
+      <a href="#" class="brand-logo center"><img src="assets/images/Logo.png" height="50px" width="50px" alt="Logo">
+      </a>
+    </nav>
+  </header>
+  <main class="container">
     <!-- SEARCH FORM -->
     <ul class="collapsible popout">
       <li id="collaspe-switch">
@@ -61,15 +61,14 @@
               </button>
               <div id="saved-drinks" class="modal">
                 <div class="modal-content">
-                  <h4>Saved Drinks</h4>
+                  <h4>Saved Drinks<a href="#!" class="modal-close waves-effect waves-green btn-flat right">X</a></h4>
                   <p>Here's a list of your favorite drinks</p>
-                  <ul id="drink-list">
+                  <div id="drink-list" class="collection">
                     <!-- EXAMPLE SAVED DRINK -->
-                    <!-- <li><a class="show-drink">Margarita</a></li> -->
-                  </ul>
+                    <!-- <a class="collection-item show-drink">Margarita</a> -->
+                  </div>
                 </div>
                 <div class="modal-footer">
-                  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
                 </div>
               </div>
             </p>
@@ -85,7 +84,7 @@
     <!-- GOOGLE MAPS -->
     <div id="g-maps">
     </div>
-  </div>
+  </main>
   <!-- SCRIPT LINKS -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
@@ -93,7 +92,7 @@
   <script src="assets/js/module-herson.js"></script>
   <script src="assets/js/module-marc.js"></script>
   <script src="assets/js/module-garrett.js"></script>
-  <!-- <script src="assets/js/module-mohmed.js"></script> -->
+  <script src="assets/js/module-mohmed.js"></script>
 
 </body>
 
