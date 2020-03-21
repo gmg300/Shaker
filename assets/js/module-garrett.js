@@ -36,13 +36,8 @@ $(document).ready(function() {
       .closest(".drink-item")
       .find(".show-drink")
       .text();
-    var index = $(this)
-      .closest(".drink-item")
-      .find(".show-drink")
-      .data("index");
     // console.log(drink);
-    // console.log(index);
-    deleteDrink(drink, index);
+    deleteDrink(drink);
   });
 
   function getFeaturedDrink() {
@@ -282,9 +277,9 @@ $(document).ready(function() {
     }
   }
 
-  function deleteDrink(drink, index) {
+  function deleteDrink(drink) {
     if (savedDrinks.includes(drink)) {
-      savedDrinks.splice(index, 1);
+      savedDrinks = _.pull(savedDrinks, drink);
       storeSavedDrinksList();
       renderSavedDrinksList();
     } else {
@@ -311,7 +306,7 @@ $(document).ready(function() {
     for (i = 0; i < savedDrinks.length; i++) {
       var drink = savedDrinks[i];
       var block = `<div class="drink-item"><i class="delete btn right hoverable m-0 pt-2 material-icons">delete_forever</i>
-      <a class="collection-item show-drink" data-index="${i}">${drink}</a></div>`;
+      <a class="collection-item show-drink">${drink}</a></div>`;
       $("#drink-list").prepend(block);
     }
   }
