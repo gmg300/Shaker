@@ -252,10 +252,7 @@ $(document).ready(function() {
         amt: res.drinks[0].strMeasure15
       }
     ];
-    console.log(ingredients);
-    console.log(ingredients);
     var ingredientsList = "";
-
     for (i = 0; i < ingredients.length; i++) {
       if (ingredients[i].name !== null && ingredients[i].amt == null) {
         ingredientsList += `<li>${ingredients[i].name}</li>`;
