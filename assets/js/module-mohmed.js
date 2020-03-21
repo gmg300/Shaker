@@ -38,14 +38,6 @@ $(document).ready(function () {
                         radius: '500',
                         type: ['restaurant']
                     };
-                    function createMarker(place) {
-
-                        new google.maps.Marker({
-                            position: place.geometry.location,
-                            map: map
-                        });
-                    }
-                    createMarker()
                     service = new google.maps.places.PlacesService(map);
                     service.nearbySearch(request, callback);
                     
