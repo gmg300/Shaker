@@ -9,6 +9,7 @@ $(document).ready(function() {
   $("#find-drinks").on("click", function(e) {
     // Search button
     e.preventDefault();
+    $('.collapsible').collapsible('close');
     getDrinks();
   });
   // SAVE DRINK TO LIST BUTTONS
@@ -25,6 +26,8 @@ $(document).ready(function() {
   // DISPLAY SAVED DRINK BUTTONS
   $(document).on("click", ".show-drink", function(e) {
     e.preventDefault();
+    $('.collapsible').collapsible('close');
+    $('#saved-drinks').modal('close');
     var element = $(this);
     var savedDrink = $(this).text();
     getSavedDrink(savedDrink);
@@ -118,7 +121,7 @@ $(document).ready(function() {
         url: queryURL,
         method: "GET"
       }).then(function(res) {
-        console.log(res.drinks[0]);
+        // console.log(res.drinks[0]);
         renderDrinks(res);
       });
     }
