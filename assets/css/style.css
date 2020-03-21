@@ -12,11 +12,11 @@ body {
 
 .collapsible-body{
     background-color: white;
-    padding: 5px;
+    padding: .25rem;
 }
 
 .row{
-    margin: 5px;
+    margin: 0.25rem;
 }
 
 .input-field.col label {
@@ -30,4 +30,12 @@ input[type=range] {
 
 .show-drink {
     cursor: pointer;
+}
+
+footer{
+    box-sizing: border-box;
+    background-color: #ef5350;
+    height: 50px;
+    text-align: center;
+    padding: .25rem;
 }
