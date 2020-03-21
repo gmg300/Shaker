@@ -60,6 +60,8 @@
               <button data-target="saved-drinks" class="btn modal-trigger">Saved Drinks<i
                   class="material-icons right">cloud</i>
               </button>
+               <!-- Modal Trigger -->
+              <a class="waves-effect waves-light btn modal-trigger" href="#map-modal">Find a Bar</a>
               <!-- SAVED DRINKS -->
               <div id="saved-drinks" class="modal">
                 <div class="modal-content">
@@ -67,6 +69,7 @@
                   <p>Here's a list of your favorite drinks</p>
                   <div id="drink-list" class="collection">
                   </div>
+                  
                 </div>
                 <div class="modal-footer">
                 </div>
@@ -81,10 +84,23 @@
     </div>
     <!-- SEARCHED DRINKS -->
     <div id="drinks-view" class="row">
+      
     </div>
     <!-- GOOGLE MAPS -->
     <div id="g-maps">
     </div>
+   
+
+  <!-- Modal Structure -->
+  <div id="map-modal" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
   </main>
   <!-- FOOTER -->
   <footer class="footer">
