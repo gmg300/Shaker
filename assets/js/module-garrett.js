@@ -285,63 +285,26 @@ $(document).ready(function() {
   }
 
   function renderSavedDrinksList() {
-    $("#saved-drinks").empty();
+    $("#drink-list").empty();
     for (i = 0; i < savedDrinks.length; i++) {
       var drink = savedDrinks[i];
-      var block = `<a class="show-drink">${drink}</a>`;
-      $("#saved-drinks").prepend(block);
+      var block = `<li><a class="show-drink">${drink}</a></li>`;
+      $("#drink-list").prepend(block);
     }
   }
 
   function getSavedDrink(savedDrink) {
+    $("#featured-drink").empty();
+    $("#drinks-view").empty();
     var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + savedDrink;
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function(res) {
       // console.log(res.drinks[0]);
-      renderSavedDrink(res);
+      renderFeaturedDrink(res);
     });
 
-  }
-
-  function renderSavedDrink(res) {
-     // Get basic drink info
-     var drink = res.drinks[0].strDrink;
-     var img = res.drinks[0].strDrinkThumb;
-     var instructions = res.drinks[0].strInstructions;
-     // Get drink ingredients and measurements, concatenate and format as list
-     var formattedIngredients = formatIngredients(res);
-     // Check if saved
-     var saved = "";
-     if (savedDrinks.includes(drink)) {
-       saved = `<i class="save-drink fas fa-check-circle green-text text-lighten-2 fa-2x"></i>`;
-     } else {
-       saved = `<i class="save-drink far fa-save red-text text-lighten-2 fa-2x"></i>`;
-     }
-     // Construct HTML card with drink info
-     var block = `<div class="col">
-                       <div class="card hoverable">
-                         <div class="card-image waves-effect waves-block waves-light">
-                           <img class="activator" src="${img}">
-                         </div>
-                         <div class="card-content">
-                           <span class="card-title activator grey-text text-darken-4">${drink}<i class="material-icons right">more_vert</i></span>
-                           <p>${saved}</p>
-                         </div>
-                        <div class="card-reveal">
-                          <span class="card-title grey-text text-darken-4">${drink} Recipe<i class="material-icons right">close</i></span>
-                          <p>
-                           ${instructions}
-                          </p>
-                          <span class="card-title grey-text text-darken-4">Ingredients:</span>
-                          <ul>
-                           ${formattedIngredients}
-                          </ul>
-                        </div>
-                       </div>
-                     </div>`;
-     $("#drinks-view").append(block);
   }
 
 });
