@@ -14,3 +14,7 @@ input[type=range] {
     margin-top: 2.25rem;
     /* padding-top: 2rem; */
 }
+
+.show-drink {
+    cursor: pointer;
+}
