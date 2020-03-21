@@ -90,33 +90,7 @@ $(document).ready(function() {
     if (options.alcoholType == "Random") {
       getRandomDrinks(options);
     } else {
-      var drinks = [];
-      var ingredient = options.alcoholType;
-      queryURL =
-        "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" +
-        ingredient;
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).then(function(res) {
-        var count = options.drinkCount;
-        var drinksArr = res.drinks;
-        for (i = 0; i < count; i++) {
-          var result = _.sample(drinksArr);
-          var drink = result.strDrink;
-          drinks.push(drink);
-        }
-        for (i = 0; i < drinks.length; i++) {
-          $.ajax({
-            url:
-              "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
-              drinks[i],
-            method: "GET"
-          }).then(function(res) {
-            renderDrinks(res);
-          });
-        }
-      });
+      getDrinksByIngredient(options);
     }
   }
 
@@ -132,6 +106,33 @@ $(document).ready(function() {
         renderDrinks(res);
       });
     }
+  }
+
+  function getDrinksByIngredient(options) {
+    var drinks = [];
+      var ingredient = options.alcoholType;
+      queryURL =
+        "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" +
+        ingredient;
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function(res) {
+        var count = options.drinkCount;
+        var drinksArr = res.drinks;
+        drinks = _.sampleSize(drinksArr, count);
+        // console.log(drinks);
+        for (i = 0; i < drinks.length; i++) {
+          $.ajax({
+            url:
+              "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
+              drinks[i].strDrink,
+            method: "GET"
+          }).then(function(res) {
+            renderDrinks(res);
+          });
+        }
+      });
   }
 
   function renderDrinks(res) {

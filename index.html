@@ -20,27 +20,6 @@
     <!-- navbar content here  -->
     <a href="#" class="brand-logo center"><img src="assets/images/Logo.png" height="50px" width="50px" alt="Logo">
     </a>
-    <ul id="slide-out" class="sidenav">
-      <li>
-        <div class="user-view">
-          <div class="background">
-            <img src="assets/images/bartender.jpg" height=200px>
-          </div>
-          <!-- spacer for image -->
-          <br>
-          <br>
-          <br>
-      </li>
-      </div>
-      <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-      <li><a href="#!">Second Link</a></li>
-      <li>
-        <div class="divider"></div>
-      </li>
-      <li><a class="subheader">Subheader</a></li>
-      <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-    </ul>
-    <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
   </nav>
   <div class="container">
     <!-- SEARCH FORM -->
@@ -51,51 +30,37 @@
         </div>
         <div class="collapsible-body">
           <div class="row">
-          <div class="input-field col s12 m6">
-            <select id="alcohol-type">
-              <option value="Random" selected>Random</option>
-              <option value="Gin">Gin</option>
-              <option value="Rum">Rum</option>
-              <option value="Tequila">Tequila</option>
-              <option value="Vodka">Vodka</option>
-              <option value="Whiskey">Whiskey</option>
-              <option value="Bourbon">Bourbon</option>
-              <option value="Scotch">Scotch</option>
-            </select>
-            <label class="">Select hard liquor</label>
+            <div class="input-field col s12 m6">
+              <select id="alcohol-type">
+                <option value="Random" selected>Random</option>
+                <option value="Gin">Gin</option>
+                <option value="Rum">Rum</option>
+                <option value="Tequila">Tequila</option>
+                <option value="Vodka">Vodka</option>
+                <option value="Bourbon">Bourbon</option>
+                <option value="Scotch">Scotch</option>
+              </select>
+              <label class="">Select hard liquor</label>
+            </div>
+            <div class="input-field col s12 m6 mt-0">
+              <div class="range-field">
+                <label class="">Select number of drinks (1 - 10)</label>
+                <input class="" type="range" id="drinks-number" min="0" max="10" />
+              </div>
+            </div>
           </div>
-          <div class="input-field col s12 m6 mt-0">
-          <div class="range-field">
-            <label class="">Select number of drinks (1 - 10)</label>
-            <input class="" type="range" id="drinks-number" min="0" max="10" />
+          <div class="row">
+            <p class="mt-6 center">
+              <button id="find-drinks" class="btn waves-effect waves-light" type="submit" name="action">Find Drinks
+                <i class="material-icons right">search</i>
+              </button>
+            </p>
           </div>
-        </div>
-      </div>
-        <div class="row">
-          <p class="mt-6 center">
-            <button id="find-drinks" class="btn waves-effect waves-light" type="submit" name="action">Find Drinks
-              <i class="material-icons right">search</i>
-            </button>
-          </p>
-        </div>
       </li>
     </ul>
     <!-- FEATURED DRINK -->
     <div id="featured-drink" class="row-center">
     </div>
-
-    <div class="fixed-action-btn">
-      <a class="btn-floating btn-large red">
-        <i class="large material-icons">mode_edit</i>
-      </a>
-      <ul>
-        <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-        <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-        <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-        <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
-      </ul>
-    </div>
-
     <!-- GENERATED DRINKS -->
     <div id="drinks-view" class="row">
     </div>
@@ -105,12 +70,12 @@
   </div>
   <!-- SCRIPT LINKS -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src='https://cdn.jsdelivr.net/g/lodash@4(lodash.min.js+lodash.fp.min.js)'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="assets/js/module-herson.js"></script>
   <script src="assets/js/module-marc.js"></script>
   <script src="assets/js/module-garrett.js"></script>
-  <!-- <script src="assets/js/module-mohmed.js"></script> -->
+  <script src="assets/js/module-mohmed.js"></script>
 
 </body>
 
