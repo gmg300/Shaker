@@ -15,7 +15,7 @@ $(document).ready(function () {
                 lat = position.coords.latitude
                 long = position.coords.longitude
                 queryURL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${long}&radius=1500&type=restaurant&keyword=cruise&key=AIzaSyDjJeZWvxxMbymDJSMvXpXphLrD4lxDP84`
-                gmap();
+                gmap(queryURL);
             });
 
         } else {
@@ -24,7 +24,6 @@ $(document).ready(function () {
     }
 
     function gmap() {
-
         $.ajax({
             url: queryURL,
             method: "GET"

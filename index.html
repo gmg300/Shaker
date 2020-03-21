@@ -15,13 +15,13 @@
 </head>
 
 <body>
-
-  <nav>
-    <!-- navbar content here  -->
-    <a href="#" class="brand-logo center"><img src="assets/images/Logo.png" height="50px" width="50px" alt="Logo">
-    </a>
-  </nav>
-  <div class="container">
+  <header>
+    <nav>
+      <a href="#" class="brand-logo center"><img src="assets/images/Logo.png" height="50px" width="50px" alt="Logo">
+      </a>
+    </nav>
+  </header>
+  <main class="container">
     <!-- SEARCH FORM -->
     <ul class="collapsible popout">
       <li id="collaspe-switch">
@@ -29,6 +29,7 @@
           <i class="material-icons">search</i>Find Drinks
         </div>
         <div class="collapsible-body">
+          <!-- SEARCH OPTIONS -->
           <div class="row">
             <div class="input-field col s12 m6">
               <select id="alcohol-type">
@@ -49,27 +50,24 @@
               </div>
             </div>
           </div>
-
           <div class="row">
+            <!-- SEARCH FORM BUTTONS -->
             <p class="mt-6 center">
               <button id="find-drinks" class="btn waves-effect waves-light" type="submit" name="action">Find Drinks
                 <i class="material-icons right">search</i>
               </button>
-              <!-- SAVED DRINKS -->
               <button data-target="saved-drinks" class="btn modal-trigger">Saved Drinks<i
                   class="material-icons right">cloud</i>
               </button>
+              <!-- SAVED DRINKS -->
               <div id="saved-drinks" class="modal">
                 <div class="modal-content">
-                  <h4>Saved Drinks</h4>
+                  <h4>Saved Drinks<a href="#!" class="material-icons modal-close waves-effect waves-green btn-flat right">close</a></h4>
                   <p>Here's a list of your favorite drinks</p>
-                  <ul id="drink-list">
-                    <!-- EXAMPLE SAVED DRINK -->
-                    <!-- <li><a class="show-drink">Margarita</a></li> -->
-                  </ul>
+                  <div id="drink-list" class="collection">
+                  </div>
                 </div>
                 <div class="modal-footer">
-                  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
                 </div>
               </div>
             </p>
@@ -80,13 +78,13 @@
     <!-- FEATURED DRINK -->
     <div id="featured-drink" class="row-center">
     </div>
-    <!-- GENERATED DRINKS -->
+    <!-- SEARCHED DRINKS -->
     <div id="drinks-view" class="row">
     </div>
     <!-- GOOGLE MAPS -->
     <div id="g-maps">
     </div>
-  </div>
+  </main>
   <!-- SCRIPT LINKS -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
