@@ -36,13 +36,8 @@ $(document).ready(function() {
       .closest(".drink-item")
       .find(".show-drink")
       .text();
-    var index = $(this)
-      .closest(".drink-item")
-      .find(".show-drink")
-      .data("index");
     // console.log(drink);
-    // console.log(index);
-    deleteDrink(drink, index);
+    deleteDrink(drink);
   });
 
   function getFeaturedDrink() {
@@ -257,7 +252,10 @@ $(document).ready(function() {
         amt: res.drinks[0].strMeasure15
       }
     ];
+    console.log(ingredients);
+    console.log(ingredients);
     var ingredientsList = "";
+
     for (i = 0; i < ingredients.length; i++) {
       if (ingredients[i].name !== null && ingredients[i].amt == null) {
         ingredientsList += `<li>${ingredients[i].name}</li>`;
@@ -282,9 +280,9 @@ $(document).ready(function() {
     }
   }
 
-  function deleteDrink(drink, index) {
+  function deleteDrink(drink) {
     if (savedDrinks.includes(drink)) {
-      savedDrinks.splice(index, 1);
+      savedDrinks = _.pull(savedDrinks, drink);
       storeSavedDrinksList();
       renderSavedDrinksList();
     } else {
@@ -311,7 +309,7 @@ $(document).ready(function() {
     for (i = 0; i < savedDrinks.length; i++) {
       var drink = savedDrinks[i];
       var block = `<div class="drink-item"><i class="delete btn right hoverable m-0 pt-2 material-icons">delete_forever</i>
-      <a class="collection-item show-drink" data-index="${i}">${drink}</a></div>`;
+      <a class="collection-item show-drink">${drink}</a></div>`;
       $("#drink-list").prepend(block);
     }
   }
