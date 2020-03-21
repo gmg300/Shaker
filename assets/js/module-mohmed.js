@@ -16,45 +16,53 @@ $(document).ready(function () {
                 lat = position.coords.latitude
                 long = position.coords.longitude
                 queryURL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${long}&radius=1500&type=restaurant&keyword=cruise&key=AIzaSyDjJeZWvxxMbymDJSMvXpXphLrD4lxDP84`
-                console.log(queryURL)
+                
                 // gmap();
-                //  beg 
+                //   
                 var map;
                 var service;
                 var infowindow;
 
                 function initialize() {
-                    var pyrmont = new google.maps.LatLng(41, -87);
-
-                    map = new google.maps.Map(document.getElementById('map'), {
+                    
+                    var pyrmont = new google.maps.LatLng(-33.8665433, 151.1956316);
+                    
+                    map = new google.maps.Map($('map'), {
                         center: pyrmont,
                         zoom: 15
-                    });
-
+                    }); 
+                    
                     var request = {
+                        
                         location: pyrmont,
                         radius: '500',
-                        types: ['bar']
+                        type: ['restaurant']
                     };
+                    function createMarker(place) {
 
+                        new google.maps.Marker({
+                            position: place.geometry.location,
+                            map: map
+                        });
+                    }
+                    createMarker()
                     service = new google.maps.places.PlacesService(map);
                     service.nearbySearch(request, callback);
+                    
                 }
-                google.maps.event.addDomListener(window, "load", initialize);
 
                 function callback(results, status) {
+                    console.log(queryURL)
                     if (status == google.maps.places.PlacesServiceStatus.OK) {
                         for (var i = 0; i < results.length; i++) {
-                            var place = results[i];
-                            console.log(place.name);
-                            console.log(place.place_id);
                             createMarker(results[i]);
                         }
                     }
                 }
-                initialize();
 
-                // end
+
+                initialize();
+                //
             });
 
         } else {
@@ -69,7 +77,7 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            console.log(response)
+            
 
             for (var i = 0; i < response.results.length; i++) {
                 data.push({
