@@ -12,11 +12,11 @@
 
 .collapsible-body{
     background-color: white;
-    padding: 5px;
+    padding: .25rem;
 }
 
 .row{
-    margin: 5px;
+    margin: 0.25rem;
 }
 
 .input-field.col label {
