@@ -10,7 +10,6 @@
 * NEW - User can choose alcohol type and number of drinks before searching
 
 **Future Versions**
-* Saved drinks list
 * Google maps connection that shows bars and grocery stores near the user
 
 ## Project Requirements

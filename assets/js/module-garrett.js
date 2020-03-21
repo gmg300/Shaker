@@ -2,7 +2,7 @@ $(document).ready(function() {
   console.log("*** module-garrett.js loaded ***");
 
   var savedDrinks = [];
-  getSavedDrinks();
+  getSavedDrinksList();
   getFeaturedDrink();
 
   $("#find-drinks").on("click", function(e) {
@@ -24,6 +24,14 @@ $(document).ready(function() {
     saveDrink(element, drink);
   });
 
+  $(document).on("click", ".show-drink", function(e) {
+    // Redisplay a saved drink
+    e.preventDefault();
+    var element = $(this);
+    var savedDrink = $(this).text();
+    getSavedDrink(savedDrink);
+  });
+
   function getFeaturedDrink() {
     var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
     $("#featured-drink").empty();
@@ -34,7 +42,7 @@ $(document).ready(function() {
         url: queryURL,
         method: "GET"
       }).then(function(res) {
-        console.log(res.drinks[0]);
+        // console.log(res.drinks[0]);
         renderFeaturedDrink(res);
       });
     }
@@ -257,24 +265,46 @@ $(document).ready(function() {
       savedDrinks.push(drink);
       element.removeClass("far fa-save red-text");
       element.addClass("fas fa-check-circle green-text");
-      storeSavedDrinks();
-      renderSavedDrinks();
+      storeSavedDrinksList();
+      renderSavedDrinksList();
     }
   }
 
-  function storeSavedDrinks() {
+  function storeSavedDrinksList() {
     localStorage.setItem("savedDrinks", JSON.stringify(savedDrinks));
   }
 
-  function getSavedDrinks() {
+  function getSavedDrinksList() {
     var storedDrinks = JSON.parse(localStorage.getItem("savedDrinks"));
     if (storedDrinks == null) {
       savedDrinks = [];
     } else {
       savedDrinks = storedDrinks;
     }
-    renderSavedDrinks();
+    renderSavedDrinksList();
   }
 
-  function renderSavedDrinks() {}
+  function renderSavedDrinksList() {
+    $("#drink-list").empty();
+    for (i = 0; i < savedDrinks.length; i++) {
+      var drink = savedDrinks[i];
+      var block = `<li><a class="show-drink">${drink}</a></li>`;
+      $("#drink-list").prepend(block);
+    }
+  }
+
+  function getSavedDrink(savedDrink) {
+    $("#featured-drink").empty();
+    $("#drinks-view").empty();
+    var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + savedDrink;
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(res) {
+      // console.log(res.drinks[0]);
+      renderFeaturedDrink(res);
+    });
+
+  }
+
 });
