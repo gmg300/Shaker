@@ -6,6 +6,19 @@
     height: auto; 
 }
 
+.container{
+    background-color: khaki
+}
+
+.collapsible-body{
+    background-color: white;
+    padding: 5px;
+}
+
+.row{
+    margin: 5px;
+}
+
 .input-field.col label {
     left: .75rem;
 }
