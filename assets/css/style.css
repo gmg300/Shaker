@@ -1,8 +1,16 @@
-#random-drink {
+#featured-drink {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 60%;
-    height: auto;
-    
+    height: auto; 
+}
+
+.input-field.col label {
+    left: .75rem;
+}
+
+input[type=range] {
+    margin-top: 2.25rem;
+    /* padding-top: 2rem; */
 }
