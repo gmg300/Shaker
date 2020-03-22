@@ -40,12 +40,9 @@ input[type=range] {
 
 footer{
     text-align: center;
-<<<<<<< HEAD
     padding: .25rem;
 }
 
 .modal.bottom-sheet{
     max-height: 95%; 
-=======
->>>>>>> aa698d5c8958003a13f7fbb1f39f2e3295f0c6b3
 }
