@@ -40,6 +40,6 @@ footer{
     padding: .25rem;
 }
 
-.modal { 
-    width: 75% !important ; height: 75% !important ; 
+.modal.bottom-sheet{
+    max-height: 95%; 
 }
