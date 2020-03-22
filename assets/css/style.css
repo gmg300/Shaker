@@ -8,8 +8,14 @@
 
 body {
     background-color: rgba(235, 190, 155, .25);
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
+main{
+    flex: 1 0 auto;
+}
 .collapsible-body{
     background-color: white;
     padding: .25rem;
@@ -33,13 +39,13 @@ input[type=range] {
 }
 
 footer{
-    box-sizing: border-box;
-    background-color: #ef5350;
-    height: 50px;
     text-align: center;
+<<<<<<< HEAD
     padding: .25rem;
 }
 
 .modal.bottom-sheet{
     max-height: 95%; 
+=======
+>>>>>>> aa698d5c8958003a13f7fbb1f39f2e3295f0c6b3
 }
