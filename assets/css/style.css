@@ -26,6 +26,11 @@ footer{
     padding: .25rem;
 }
 
+.choose {
+    width: 12rem;
+    margin: .25rem;
+}
+
 .input-field.col label {
     left: .75rem;
 }
