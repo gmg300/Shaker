@@ -6,8 +6,18 @@ body {
     flex-direction: column;
 }
 
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+
 main{
     flex: 1 0 auto;
+}
+
+footer{
+    text-align: center;
+    padding: .25rem;
 }
 
 /* SEARCH FORM */
@@ -28,11 +38,6 @@ input[type=range] {
 /* SAVED DRINKS */
 .show-drink {
     cursor: pointer;
-}
-
-footer{
-    text-align: center;
-    padding: .25rem;
 }
 
 /* MAPS */
