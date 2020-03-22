@@ -58,10 +58,6 @@ input[type=range] {
     height: auto; 
 }
 
-#g-mapz{
-    height: 75%;
-}
-
 /* MEDIA QUERIES */
 @media only screen and (max-width: 600px) {
     .center-card {
