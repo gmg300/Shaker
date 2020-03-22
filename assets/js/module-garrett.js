@@ -43,59 +43,22 @@ $(document).ready(function() {
     deleteDrink(drink);
   });
 
+  // GET DATA FUNCTIONS
   function getFeaturedDrink() {
+    var count = 1;
     var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
     $("#featured-drink").empty();
     $("#drinks-view").empty();
-    for (i = 0; i < 1; i++) {
+    for (i = 0; i < count; i++) {
       // loop over ajax query for as many drinks as user specifies
       $.ajax({
         url: queryURL,
         method: "GET"
       }).then(function(res) {
         // console.log(res.drinks[0]);
-        renderFeaturedDrink(res);
+        renderDrinks(res, count);
       });
     }
-  }
-
-  function renderFeaturedDrink(res) {
-    // Get basic drink info
-    var drink = res.drinks[0].strDrink;
-    var img = res.drinks[0].strDrinkThumb;
-    var instructions = res.drinks[0].strInstructions;
-    // Get drink ingredients and measurements, concatenate and format as list
-    var formattedIngredients = formatIngredients(res);
-    // Check if saved
-    var saved = "";
-    if (savedDrinks.includes(drink)) {
-      saved = `<i class="save-drink fas fa-check-circle green-text text-lighten-2 fa-2x"></i>`;
-    } else {
-      saved = `<i class="save-drink far fa-save red-text text-lighten-2 fa-2x"></i>`;
-    }
-    // Construct HTML card with drink info
-    var block = `<div class="col">
-                      <div class="card hoverable">
-                        <div class="card-image waves-effect waves-block waves-light">
-                          <img class="activator" src="${img}">
-                        </div>
-                        <div class="card-content">
-                          <span class="card-title activator grey-text text-darken-4">${drink}</span>
-                          <p>${saved}</p>
-                        </div>
-                       <div class="card-reveal">
-                         <span class="card-title grey-text text-darken-4">${drink} Recipe<i class="material-icons right">close</i></span>
-                         <p>
-                          ${instructions}
-                         </p>
-                         <span class="card-title grey-text text-darken-4">Ingredients:</span>
-                         <ul>
-                          ${formattedIngredients}
-                         </ul>
-                       </div>
-                      </div>
-                    </div>`;
-    $("#featured-drink").append(block);
   }
 
   function getDrinks() {
@@ -103,7 +66,7 @@ $(document).ready(function() {
     $("#drinks-view").empty();
     var options = {
       drinkCount: $("#drinks-number").val(),
-      alcohol: $("#alcohol").checked,
+      // alcohol: $("#alcohol").checked,
       alcoholType: $("#alcohol-type").val()
     };
     if (options.alcoholType == "Random") {
@@ -114,21 +77,23 @@ $(document).ready(function() {
   }
 
   function getRandomDrinks(options) {
+    var count = options.drinkCount;
     var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
     // loop over ajax query for as many drinks as user specifies
-    for (i = 0; i < options.drinkCount; i++) {
+    for (i = 0; i < count; i++) {
       $.ajax({
         url: queryURL,
         method: "GET"
       }).then(function(res) {
         // console.log(res.drinks[0]);
-        renderDrinks(res);
+        renderDrinks(res, count);
       });
     }
   }
 
   function getDrinksByIngredient(options) {
     var drinks = [];
+    var count = options.drinkCount;
     var ingredient = options.alcoholType;
     queryURL =
       "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + ingredient;
@@ -136,7 +101,6 @@ $(document).ready(function() {
       url: queryURL,
       method: "GET"
     }).then(function(res) {
-      var count = options.drinkCount;
       var drinksArr = res.drinks;
       drinks = _.sampleSize(drinksArr, count);
       // console.log(drinks);
@@ -147,13 +111,39 @@ $(document).ready(function() {
             drinks[i].strDrink,
           method: "GET"
         }).then(function(res) {
-          renderDrinks(res);
+          renderDrinks(res, count);
         });
       }
     });
   }
 
-  function renderDrinks(res) {
+  function getSavedDrinksList() {
+    var storedDrinks = JSON.parse(localStorage.getItem("savedDrinks"));
+    if (storedDrinks == null) {
+      savedDrinks = [];
+    } else {
+      savedDrinks = storedDrinks;
+    }
+    renderSavedDrinksList();
+  }
+
+  function getSavedDrink(savedDrink) {
+    $("#featured-drink").empty();
+    $("#drinks-view").empty();
+    count = 1;
+    var queryURL =
+      "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + savedDrink;
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(res) {
+      // console.log(res.drinks[0]);
+      renderDrinks(res, count);
+    });
+  }
+
+  // RENDER RESULTS FUNCTIONS
+  function renderDrinks(res, count) {
     // Get basic drink info
     var drink = res.drinks[0].strDrink;
     var img = res.drinks[0].strDrinkThumb;
@@ -167,8 +157,18 @@ $(document).ready(function() {
     } else {
       saved = `<i class="save-drink far fa-save red-text text-lighten-2 fa-2x"></i>`;
     }
+    var center = "";
+    if(count == 1) {
+      center = "center-card";
+      $("#drinks-view").removeClass('row');
+      $("#drinks-view").addClass('row-center');
+    } else {
+      center = "";
+      $("#drinks-view").removeClass('row-center');
+      $("#drinks-view").addClass('row');
+    }
     // Construct HTML card with drink info
-    var block = `<div class="col s12 m6">
+    var block = `<div class="col s12 m6 ${center}">
                       <div class="card hoverable">
                         <div class="card-image waves-effect waves-block waves-light">
                           <img class="activator" src="${img}">
@@ -192,6 +192,17 @@ $(document).ready(function() {
     $("#drinks-view").prepend(block);
   }
 
+  function renderSavedDrinksList() {
+    $("#drink-list").empty();
+    for (i = 0; i < savedDrinks.length; i++) {
+      var drink = savedDrinks[i];
+      var block = `<div class="drink-item"><i class="delete btn right hoverable m-0 pt-2 material-icons">delete_forever</i>
+      <a class="collection-item show-drink">${drink}</a></div>`;
+      $("#drink-list").prepend(block);
+    }
+  }
+
+  // UTILITY FUNCTIONS
   function formatIngredients(res) {
     var ingredients = [
       {
@@ -294,37 +305,4 @@ $(document).ready(function() {
     localStorage.setItem("savedDrinks", JSON.stringify(savedDrinks));
   }
 
-  function getSavedDrinksList() {
-    var storedDrinks = JSON.parse(localStorage.getItem("savedDrinks"));
-    if (storedDrinks == null) {
-      savedDrinks = [];
-    } else {
-      savedDrinks = storedDrinks;
-    }
-    renderSavedDrinksList();
-  }
-
-  function renderSavedDrinksList() {
-    $("#drink-list").empty();
-    for (i = 0; i < savedDrinks.length; i++) {
-      var drink = savedDrinks[i];
-      var block = `<div class="drink-item"><i class="delete btn right hoverable m-0 pt-2 material-icons">delete_forever</i>
-      <a class="collection-item show-drink">${drink}</a></div>`;
-      $("#drink-list").prepend(block);
-    }
-  }
-
-  function getSavedDrink(savedDrink) {
-    $("#featured-drink").empty();
-    $("#drinks-view").empty();
-    var queryURL =
-      "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + savedDrink;
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function(res) {
-      // console.log(res.drinks[0]);
-      renderFeaturedDrink(res);
-    });
-  }
 });

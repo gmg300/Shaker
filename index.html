@@ -27,7 +27,7 @@
     <ul class="collapsible popout">
       <li id="collaspe-switch">
         <div class="collapsible-header">
-          <i class="material-icons">search</i>Find Drinks
+          <i class="material-icons">search</i>Search
         </div>
         <div class="collapsible-body">
           <!-- SEARCH OPTIONS -->
@@ -54,18 +54,23 @@
           <div class="row">
             <!-- SEARCH FORM BUTTONS -->
             <p class="mt-6 center">
+              <!-- SEARCH BUTTON -->
               <button id="find-drinks" class="btn waves-effect waves-light" type="submit" name="action">Find Drinks
                 <i class="material-icons right">search</i>
               </button>
+              <!-- SAVED DRINKS TRIGGER -->
               <button data-target="saved-drinks" class="btn modal-trigger">Saved Drinks<i
-                  class="material-icons right">cloud</i>
+                  class="material-icons right">save</i>
               </button>
-               <!-- Modal Trigger -->
-              <a class="waves-effect waves-light btn modal-trigger" href="#map-modal">Find a Bar</a>
+              <!-- MAPS TRIGGER -->
+              <a class="waves-effect waves-light btn modal-trigger" href="#map-modal">Find a Bar
+                <i class="material-icons right">local_bar</i>
+              </a>
               <!-- SAVED DRINKS -->
               <div id="saved-drinks" class="modal">
                 <div class="modal-content">
-                  <h4>Saved Drinks<a href="#!" class="material-icons modal-close waves-effect waves-green btn-flat right">close</a></h4>
+                  <h4>Saved Drinks<a href="#!"
+                      class="material-icons modal-close waves-effect waves-green btn-flat right">close</a></h4>
                   <p>Here's a list of your favorite drinks</p>
                   <div id="drink-list" class="collection">
                   </div>
@@ -78,32 +83,27 @@
         </div>
       </li>
     </ul>
-    <!-- FEATURED DRINK -->
-    <div id="featured-drink" class="row-center">
-    </div>
-    <!-- SEARCHED DRINKS -->
+    <!-- DRINKS VIEW -->
     <div id="drinks-view" class="row">
-      
     </div>
     <!-- GOOGLE MAPS -->
     <div id="g-maps">
     </div>
-   
 
-  <!-- Modal Structure -->
-  <div id="map-modal" class="modal bottom-sheet">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
+    <!-- Modal Structure -->
+    <div id="map-modal" class="modal bottom-sheet">
+      <div class="modal-content">
+        <h4>Modal Header</h4>
+        <p>A bunch of text</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+      </div>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
   </main>
   <!-- FOOTER -->
   <footer class="footer">
-    <p>  &copy; 2020 </p>
+    <p> &copy; 2020 </p>
   </footer>
   <!-- SCRIPT LINKS -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
