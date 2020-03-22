@@ -2,26 +2,42 @@ $(document).ready(function() {
   console.log("*** module-garrett.js loaded ***");
 
   var savedDrinks = [];
-  getSavedDrinks();
+  getSavedDrinksList();
   getFeaturedDrink();
 
+  // SEARCH DRINKS BUTTON
   $("#find-drinks").on("click", function(e) {
     // Search button
     e.preventDefault();
     getDrinks();
   });
-
+  // SAVE DRINK TO LIST BUTTONS
   $(document).on("click", ".save-drink", function(e) {
-    // Save drinks to list group
     e.preventDefault();
     var element = $(this);
-    var selectedDrink = $(this)
+    var drink = $(this)
       .closest(".card-content")
       .find(".card-title")
       .text();
-    var drink = selectedDrink.substring(0, selectedDrink.length - 9);
     // console.log(drink);
     saveDrink(element, drink);
+  });
+  // DISPLAY SAVED DRINK BUTTONS
+  $(document).on("click", ".show-drink", function(e) {
+    e.preventDefault();
+    var element = $(this);
+    var savedDrink = $(this).text();
+    getSavedDrink(savedDrink);
+  });
+  // DELETE FROM LIST BUTTONS
+  $(document).on("click", ".delete", function(e) {
+    e.preventDefault();
+    var drink = $(this)
+      .closest(".drink-item")
+      .find(".show-drink")
+      .text();
+    // console.log(drink);
+    deleteDrink(drink);
   });
 
   function getFeaturedDrink() {
@@ -34,7 +50,7 @@ $(document).ready(function() {
         url: queryURL,
         method: "GET"
       }).then(function(res) {
-        console.log(res.drinks[0]);
+        // console.log(res.drinks[0]);
         renderFeaturedDrink(res);
       });
     }
@@ -61,7 +77,7 @@ $(document).ready(function() {
                           <img class="activator" src="${img}">
                         </div>
                         <div class="card-content">
-                          <span class="card-title activator grey-text text-darken-4">${drink}<i class="material-icons right">more_vert</i></span>
+                          <span class="card-title activator grey-text text-darken-4">${drink}</span>
                           <p>${saved}</p>
                         </div>
                        <div class="card-reveal">
@@ -90,33 +106,7 @@ $(document).ready(function() {
     if (options.alcoholType == "Random") {
       getRandomDrinks(options);
     } else {
-      var drinks = [];
-      var ingredient = options.alcoholType;
-      queryURL =
-        "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" +
-        ingredient;
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).then(function(res) {
-        var count = options.drinkCount;
-        var drinksArr = res.drinks;
-        for (i = 0; i < count; i++) {
-          var result = _.sample(drinksArr);
-          var drink = result.strDrink;
-          drinks.push(drink);
-        }
-        for (i = 0; i < drinks.length; i++) {
-          $.ajax({
-            url:
-              "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
-              drinks[i],
-            method: "GET"
-          }).then(function(res) {
-            renderDrinks(res);
-          });
-        }
-      });
+      getDrinksByIngredient(options);
     }
   }
 
@@ -132,6 +122,32 @@ $(document).ready(function() {
         renderDrinks(res);
       });
     }
+  }
+
+  function getDrinksByIngredient(options) {
+    var drinks = [];
+    var ingredient = options.alcoholType;
+    queryURL =
+      "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + ingredient;
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(res) {
+      var count = options.drinkCount;
+      var drinksArr = res.drinks;
+      drinks = _.sampleSize(drinksArr, count);
+      // console.log(drinks);
+      for (i = 0; i < drinks.length; i++) {
+        $.ajax({
+          url:
+            "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
+            drinks[i].strDrink,
+          method: "GET"
+        }).then(function(res) {
+          renderDrinks(res);
+        });
+      }
+    });
   }
 
   function renderDrinks(res) {
@@ -155,7 +171,7 @@ $(document).ready(function() {
                           <img class="activator" src="${img}">
                         </div>
                         <div class="card-content">
-                          <span class="card-title activator grey-text text-darken-4">${drink}<i class="material-icons right">more_vert</i></span>
+                          <span class="card-title activator grey-text text-darken-4">${drink}</span>
                           <p>${saved}</p>
                         </div>
                        <div class="card-reveal">
@@ -256,24 +272,56 @@ $(document).ready(function() {
       savedDrinks.push(drink);
       element.removeClass("far fa-save red-text");
       element.addClass("fas fa-check-circle green-text");
-      storeSavedDrinks();
-      renderSavedDrinks();
+      storeSavedDrinksList();
+      renderSavedDrinksList();
     }
   }
 
-  function storeSavedDrinks() {
+  function deleteDrink(drink) {
+    if (savedDrinks.includes(drink)) {
+      savedDrinks = _.pull(savedDrinks, drink);
+      storeSavedDrinksList();
+      renderSavedDrinksList();
+    } else {
+      return;
+    }
+  }
+
+  function storeSavedDrinksList() {
     localStorage.setItem("savedDrinks", JSON.stringify(savedDrinks));
   }
 
-  function getSavedDrinks() {
+  function getSavedDrinksList() {
     var storedDrinks = JSON.parse(localStorage.getItem("savedDrinks"));
     if (storedDrinks == null) {
       savedDrinks = [];
     } else {
       savedDrinks = storedDrinks;
     }
-    renderSavedDrinks();
+    renderSavedDrinksList();
   }
 
-  function renderSavedDrinks() {}
+  function renderSavedDrinksList() {
+    $("#drink-list").empty();
+    for (i = 0; i < savedDrinks.length; i++) {
+      var drink = savedDrinks[i];
+      var block = `<div class="drink-item"><i class="delete btn right hoverable m-0 pt-2 material-icons">delete_forever</i>
+      <a class="collection-item show-drink">${drink}</a></div>`;
+      $("#drink-list").prepend(block);
+    }
+  }
+
+  function getSavedDrink(savedDrink) {
+    $("#featured-drink").empty();
+    $("#drinks-view").empty();
+    var queryURL =
+      "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + savedDrink;
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(res) {
+      // console.log(res.drinks[0]);
+      renderFeaturedDrink(res);
+    });
+  }
 });

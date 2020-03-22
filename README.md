@@ -1,4 +1,4 @@
-# cocktail-app v0.2.0
+# cocktail-app v0.3.0
 
 <img alt="cocktail-app v0.1.0 gif" src="assets/images/cocktail-app_0-1-0.gif">
 
@@ -6,9 +6,11 @@
 
 **Challenges**  
 
-**v0.2.0**
+**v0.3.0** 
+* NEW - User can choose alcohol type and number of drinks before searching
 
 **Future Versions**
+* Google maps connection that shows bars and grocery stores near the user
 
 ## Project Requirements
 1. Must use at least two server-side APIs
@@ -30,9 +32,13 @@
 
 ## Credits
 
+<img alt="The Cocktail DB" src="assets/images/cocktailDB-logo.png" width="201" height="30"> https://www.thecocktaildb.com/
+
 <img alt="Materialize" src="assets/images/materialize-seeklogo.com.svg" width="30" height="30"> Materialize v1.0.0 https://materializecss.com/
 
 <img alt="JQuery Logo" src="assets/images/JQuery-logo.png" width="28" height="30"> JQuery v3.4.1 https://jquery.com/
+
+<img alt="Lodash Logo" src="assets/images/lodash-logo.png" width="41.7" height="30"> Lodash v4.17.15 https://lodash.com/
 
 
 

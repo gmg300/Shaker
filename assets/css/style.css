@@ -6,6 +6,19 @@
     height: auto; 
 }
 
+body {
+    background-color: rgba(235, 190, 155, .25);
+}
+
+.collapsible-body{
+    background-color: white;
+    padding: .25rem;
+}
+
+.row{
+    margin: 0.25rem;
+}
+
 .input-field.col label {
     left: .75rem;
 }
@@ -13,4 +26,20 @@
 input[type=range] {
     margin-top: 2.25rem;
     /* padding-top: 2rem; */
+}
+
+.show-drink {
+    cursor: pointer;
+}
+
+footer{
+    box-sizing: border-box;
+    background-color: #ef5350;
+    height: 50px;
+    text-align: center;
+    padding: .25rem;
+}
+
+.modal { 
+    width: 75% !important ; height: 75% !important ; 
 }
