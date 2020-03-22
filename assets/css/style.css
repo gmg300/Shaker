@@ -10,11 +10,6 @@ main{
     flex: 1 0 auto;
 }
 
-footer{
-    text-align: center;
-    padding: .25rem;
-}
-
 /* SEARCH FORM */
 .collapsible-body{
     background-color: white;
@@ -35,16 +30,11 @@ input[type=range] {
     cursor: pointer;
 }
 
-<<<<<<< HEAD
 footer{
     text-align: center;
     padding: .25rem;
 }
 
-.modal.bottom-sheet{
-    max-height: 95%; 
-}
-=======
 /* MAPS */
 .modal.bottom-sheet{
     max-height: 95%; 
@@ -71,4 +61,3 @@ footer{
 }
 
 
->>>>>>> 7b47782f0c52060ed5fb4df79ac963736b0793bb
