@@ -27,7 +27,7 @@ footer{
 }
 
 .choose {
-    width: 12rem;
+    width: 13rem;
     margin: .25rem;
 }
 
@@ -59,7 +59,7 @@ input[type=range] {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 75%;
+    width: 50%;
     height: auto; 
 }
 
