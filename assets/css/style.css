@@ -1,11 +1,4 @@
-.center-card {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 75%;
-    height: auto; 
-}
-
+/* GENERAL */
 body {
     background-color: rgba(235, 190, 155, .25);
     display: flex;
@@ -16,13 +9,16 @@ body {
 main{
     flex: 1 0 auto;
 }
-.collapsible-body{
-    background-color: white;
+
+footer{
+    text-align: center;
     padding: .25rem;
 }
 
-.row{
-    margin: 0.25rem;
+/* SEARCH FORM */
+.collapsible-body{
+    background-color: white;
+    padding: .25rem;
 }
 
 .input-field.col label {
@@ -34,10 +30,12 @@ input[type=range] {
     /* padding-top: 2rem; */
 }
 
+/* SAVED DRINKS */
 .show-drink {
     cursor: pointer;
 }
 
+<<<<<<< HEAD
 footer{
     text-align: center;
     padding: .25rem;
@@ -46,3 +44,31 @@ footer{
 .modal.bottom-sheet{
     max-height: 95%; 
 }
+=======
+/* MAPS */
+.modal.bottom-sheet{
+    max-height: 95%; 
+}
+
+/* DRINKS VIEW */
+.row{
+    margin: 0.25rem;
+}
+
+.center-card {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    height: auto; 
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 600px) {
+    .center-card {
+      width: 100%;
+    }
+}
+
+
+>>>>>>> 7b47782f0c52060ed5fb4df79ac963736b0793bb

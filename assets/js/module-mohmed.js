@@ -10,13 +10,13 @@ $(document).ready(function () {
                 lat = position.coords.latitude
                 long = position.coords.longitude
                 
-                $(`.modal-content`).append(`<iframe width="100%" height="540" frameborder="0" style="border:0"
+                $(`#g-maps`).append(`<iframe width="100%" height="540" frameborder="0" style="border:0"
                 src="https://www.google.com/maps/embed/v1/search?q=bars%20near%20me&key=AIzaSyDjJeZWvxxMbymDJSMvXpXphLrD4lxDP84" allowfullscreen></iframe>`)       
                 
             });
 
         } else {
-            $(`.modal-content`).text("Geolocation is not supported by this browser.")
+            $(`#g-maps`).text("Geolocation is not supported by this browser.")
         }
     }
 
