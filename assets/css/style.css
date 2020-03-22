@@ -5,7 +5,10 @@
     width: 75%;
     height: auto; 
 }
-
+nav {
+    background-color: #333;
+    padding: 10px;
+}
 body {
     background-color: rgba(235, 190, 155, .25);
     display: flex;
